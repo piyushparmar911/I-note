@@ -4,7 +4,10 @@ const User = require('../modules/User');
 const { body, validationResult } = require('express-validator'); 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const fetchuser = require('../middleware/fetchuser');
 
+
+// route 1:
 router.post('/createuser' ,[
     body('name', 'name is not valid').isLength({min: 3}),
     body('email', 'email is not valid').isEmail(),
@@ -44,11 +47,59 @@ router.post('/createuser' ,[
     } 
     catch (error) {
     console.error(error.message);
-    res.status(500).json({error: "error occurred"});
-      
-    }
-      
+    res.status(500).json({error: "internal server error"});
+  }
 })
 
+  // route 2: login page created successfully
+  router.post('/login' ,[
+    body('email', 'email is not valid').isEmail(),
+    body('password', 'password is bl').isLength({min: 6})
+    
+], async (req, res) => {
+   let jwt_secret = "thisisdemoofinotes"
+  // Check for validation errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  
+  const {email, password} = req.body;
+  try {
+    let user = await User.findOne({ email});
+    if(!user){
+      return res.status(400).json({error: "pleace enter correct information"});
+    }
+
+    const passwrordCompare = await bcrypt.compare(password, user.password);
+    if(!passwrordCompare){
+      return res.status(400).json({error: "pleace enter correct information"});
+    }
+    const data = {
+      user: {
+        id: user.id
+      }
+    }
+
+    const authtoen= jwt.sign(data, jwt_secret);
+    // res.json(user);
+    res.json({authtoen});
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).json({error: "internal server error"});
+  }
+});
+
+//  route 3: 
+router.post('/getuser',fetchuser , async (req, res) => {
+try {
+  let userId = req.user.id;
+  const user = await User.findById(userId).select("-password");  
+  res.send(user);
+} catch (error) {
+  console.error(error.message);
+  res.status(500).json({error: "internal server error"});
+}
+});
 
 module.exports = router;
