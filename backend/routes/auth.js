@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser');
 
 
-// route 1:
+// route 1: sign up
 router.post('/createuser' ,[
     body('name', 'name is not valid').isLength({min: 3}),
     body('email', 'email is not valid').isEmail(),
@@ -90,7 +90,7 @@ router.post('/createuser' ,[
   }
 });
 
-//  route 3: 
+//  route 3:  if user exit then fetch the user data
 router.post('/getuser',fetchuser , async (req, res) => {
 try {
   let userId = req.user.id;
