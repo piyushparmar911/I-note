@@ -60,10 +60,12 @@ router.put(
 
 
     const note = await Notes.findById(req.params.id);
+    // find note and updated
     if(!note)
       {
         return res.status(404).json({error: "note not found"});
       }
+      // allow to update if note is match with particular user
       if(note.user.toString() !== req.user.id)
         {
           return res.status(401).json({error: "not allowed"});
@@ -76,4 +78,26 @@ router.put(
 
 
 
+// route 4: delete  notes using : get "api/notes/deletenote/:id" login required
+router.delete(
+  "/deletenote/:id",fetchuser,
+    async (req, res) => {
+
+      // find note and deleted
+    const note = await Notes.findById(req.params.id);
+    if(!note)
+      {
+        return res.status(404).json({error: "note not found"});
+      }
+
+      // allow to delete if note is match with particular user
+      if(note.user.toString() !== req.user.id)
+        {
+          return res.status(401).json({error: "not allowed"});
+        }
+
+     await Notes.findByIdAndDelete(req.params.id);
+        res.json("success");
+  }
+);
 module.exports = router;
