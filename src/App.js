@@ -1,10 +1,10 @@
 import './App.css';
-
+import Navbar from './components/Navbar';
 function App() {
   return (
-    <div className="App">
-      <h1 >this is i-note app</h1>      
-    </div>
+    <>
+      <Navbar />
+    </>
   );
 }
 
