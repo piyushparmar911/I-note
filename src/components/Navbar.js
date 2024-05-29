@@ -1,31 +1,21 @@
-import React from 'react';
-
-export default function Navbar() {
+import React from 'react'
+import { Link  } from 'react-router-dom';
+const Navbar = () => {
   return (
     <div>
 <nav className="navbar navbar-expand-lg bg-light">
   <div className="container-fluid">
-    <a className="navbar-brand text-dark" href="/">I-note</a>
+    <Link className="navbar-brand text-dark" to="/">I-note</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse " id="navbarSupportedContent">
       <ul className="navbar-nav me-auto  mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link active text-dark" aria-current="page" href="/">Home</a>
+          <Link className="nav-link active text-dark" aria-current="page" to="/">Home</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link text-dark" href="/">About</a>
-        </li>
-        <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle text-dark" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Notes
-          </a>
-          <ul className="dropdown-menu text-dark">
-            <li><a className="dropdown-item" href="/">Add</a></li>
-            <li><a className="dropdown-item" href="/">Update</a></li>
-            <li><a className="dropdown-item" href="/">Delete</a></li>
-          </ul>
+          <Link className="nav-link text-dark" to="/About">About</Link>
         </li>
       </ul>
       <form className="d-flex" role="search">
@@ -38,3 +28,6 @@ export default function Navbar() {
     </div>
   )
 }
+
+export default Navbar
+
