@@ -21,6 +21,33 @@ const NoteState = (props) => {
         "tag": "General",
         "date": "2024-05-28T05:46:01.470Z",
         "__v": 0
+      },
+      {
+        "_id": "66556f995a43a4f996fce182",
+        "user": "66556d50c47ae8d1e57fb547",
+        "title": "demo3",
+        "description": "home demo3",
+        "tag": "General",
+        "date": "2024-05-28T05:46:01.470Z",
+        "__v": 0
+      },
+      {
+        "_id": "66556f995a43a4f996fce182",
+        "user": "66556d50c47ae8d1e57fb547",
+        "title": "demo3",
+        "description": "home demo3",
+        "tag": "General",
+        "date": "2024-05-28T05:46:01.470Z",
+        "__v": 0
+      },
+      {
+        "_id": "66556f995a43a4f996fce182",
+        "user": "66556d50c47ae8d1e57fb547",
+        "title": "demo3",
+        "description": "home demo3",
+        "tag": "General",
+        "date": "2024-05-28T05:46:01.470Z",
+        "__v": 0
       }]
 
       const [state, setstate] = useState(stateDefault)
