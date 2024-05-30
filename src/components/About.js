@@ -1,15 +1,12 @@
-import React,{ useContext, useEffect } from 'react';
-import NoteContext from '../context/notes/Notecontext';
+import React from 'react';
+
+
 
 const About = () => {
-  const a = useContext(NoteContext);
-  useEffect(() => {
-    a.update()
-    // eslint-disable-next-line
-  }, [])
+  
   return (
     <div>
-      hello i am about {a.state.name} {a.state.class}
+      hello i am about 
     </div>
   )
 }

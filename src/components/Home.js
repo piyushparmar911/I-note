@@ -1,11 +1,13 @@
 import React from 'react';
 import Note from './Note';
 const Home = () => {
+  
   return (
     <div className='m-3'>
-      <h1 className='text-center'>AddNote</h1>
+      <h1 className='text-center'>I-notes</h1>
       <div className='my-3  justify-content-center d-flex'>
-      <div className="card p-5" style={{width: "30rem"}}>
+      <div className="card  p-4"  style={{width: "25rem"}}>
+      <h1 className='text-center pb-3'>AddNote</h1>
       <form>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Title</label>
