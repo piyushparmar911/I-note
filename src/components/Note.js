@@ -6,6 +6,7 @@ import NoteItem from './NoteItem'
 const Note = () => {
   const note = useContext(noteContext);
   const {state, setstate} = note;
+  
 
   return (
 
@@ -13,7 +14,7 @@ const Note = () => {
     <div className='row'>
       {state.map ((state)=>{
         
-        return <NoteItem state={state}/>
+        return <NoteItem key={state._id} state={state}/>
       })}
     </div>
   )
