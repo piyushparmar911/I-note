@@ -1,7 +1,10 @@
-import React from 'react'
-
-const stateItem = (props) => {
+import React, { useContext }  from 'react'
+import noteContext from '../context/notes/Notecontext'
+const NoteItem = (props) => {
+  const note = useContext(noteContext);
   const {state} = props;
+    const {deleteNote} = note;
+
   return (
     <div className='col-md-3'>
     <div className=' mt-4'>
@@ -16,11 +19,11 @@ const stateItem = (props) => {
     <div className='d-flex'>
     <h5 className="card-subtitle mb-2">Description :</h5> &nbsp;  <p>{state.description}</p>
     </div>
-    <h5  className="card-text text-muted d-flex">date: <p>{state.date}</p></h5>
+    <h5  className="card-text text-muted d-flex">date: <p>{state.date.slice(0, 10)}</p></h5>
     <h5  className="card-text text-muted d-flex">tag: <p>{state.tag}</p></h5>
     <div className='d-flex justify-content-end'>
 
-    <i className='fas fa-trash-can mx-2'></i>
+    <i className='fas fa-trash-can mx-2' onClick={()=> {deleteNote(state._id)}}></i>
     <i className='fas fa-pen-nib mx-2'></i>
     </div>
     
@@ -32,4 +35,4 @@ const stateItem = (props) => {
   )
 }
 
-export default stateItem
+export default NoteItem;

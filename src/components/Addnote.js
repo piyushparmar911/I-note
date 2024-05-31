@@ -20,10 +20,10 @@ const onChange= (e) =>{
 
   return (
     <div>
-        <h1 className='text-center'>I-notes</h1>
+        
       <div className='my-3  justify-content-center d-flex'>
       <div className="card  p-4"  style={{width: "25rem"}}>
-      <h1 className='text-center pb-3'>AddNote</h1>
+      <h3 className='text-center pb-3'>AddNote</h3>
       <form>
   <div className="mb-3">
     <label htmlFor="title" className="form-label">Title</label>
