@@ -19,7 +19,7 @@ const NoteState = (props) => {
             // 'Content-Type': 'application/x-www-form-urlencoded',
           }});
           const json = await response.json();
-           setstate(json);
+           setstate(json)
           
           
       }
@@ -37,7 +37,7 @@ const NoteState = (props) => {
           },
           body: JSON.stringify({title,description,tag}),});
           
-          const json = response.json({title,description,tag});
+           response.json({title,description,tag});
           // logic to add notes
         const notes = {
           "_id": "66556f995a43adsa4f996fce18a2",
