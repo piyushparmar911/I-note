@@ -6,23 +6,26 @@ import Addnote from './Addnote'
 
 const Note = () => {
   const notes = useContext(noteContext);
-  const {state,fetchNote} = notes;
+  const {state,fetchNote,editNotes} = notes;
   useEffect(() => {
     fetchNote();
+    // eslint-disable-next-line
   }, [])
-  const [note, setnotes] = useState({etitle: "" , edescription: "", etag: ""});
+  const [note, setnotes] = useState({id: "" ,etitle: "" , edescription: "", etag: ""});
   
 const updateNote =(currentnote)=>
   {
     ref.current.click();
-    setnotes({etitle: currentnote.title , edescription: currentnote.description , etag: currentnote.tag});
+    setnotes({id: currentnote._id,etitle: currentnote.title , edescription: currentnote.description , etag: currentnote.tag});
   }
   const ref = useRef(null);
+  const refClose = useRef(null);
   //   console.log(state)
   
   const handleonClick = (e) => {
-    console.log(note + "sucessfully updated");
+    editNotes(note.id,note.etitle,note.edescription,note.etag);
       e.preventDefault();
+      refClose.current.click();
       
   };
   const onChange= (e) =>{
@@ -53,7 +56,7 @@ const updateNote =(currentnote)=>
   </div>
   <div className="mb-3">
     <label htmlFor="description" className="form-label">Description</label>
-    <textarea type="text" className="form-control" id="edescription" name="edescription" value={note.edescription} onChange={onChange}/>
+    <input type="text" className="form-control" id="edescription" name="edescription" value={note.edescription} onChange={onChange}/>
   </div>
   
   <div className="mb-3">
@@ -63,7 +66,7 @@ const updateNote =(currentnote)=>
 </form>
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" ref={refClose} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" className="btn btn-primary" onClick={handleonClick}>Update note</button>
       </div>
     </div>
