@@ -1,8 +1,9 @@
 import React, { useContext }  from 'react'
 import noteContext from '../context/notes/Notecontext'
+import   '../../src/App.css';
 const NoteItem = (props) => {
   const note = useContext(noteContext);
-  const {state} = props;
+  const {state,updateNote} = props;
     const {deleteNote} = note;
 
   return (
@@ -23,8 +24,8 @@ const NoteItem = (props) => {
     <h5  className="card-text text-muted d-flex">tag: <p>{state.tag}</p></h5>
     <div className='d-flex justify-content-end'>
 
-    <i className='fas fa-trash-can mx-2' onClick={()=> {deleteNote(state._id)}}></i>
-    <i className='fas fa-pen-nib mx-2'></i>
+    <i className='fas fa-trash-can mx-2 delete' onClick={()=> {deleteNote(state._id)}}></i>
+    <i className='fas fa-pen-nib mx-2 delete'  onClick={()=> {updateNote(state)}}></i>
     </div>
     
   </div>
