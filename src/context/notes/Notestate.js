@@ -39,17 +39,8 @@ const NoteState = (props) => {
           
           const json = await response.json({title,description,tag});
           // logic to add notes
-        const notes = {
-          "_id": json._id,
-          "user": json.user,
-          "title": title,
-          "description": description,
-          "tag": tag,
-          "date": json.date,
-          "__v": json.__v
-        }
-        // console.log("new note added: ")
-        setstate(state.concat(notes))
+          
+          setstate(state.concat(json))
       }
       
       // delete note: 

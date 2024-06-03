@@ -52,11 +52,11 @@ const updateNote =(currentnote)=>
       <form>
   <div className="mb-3">
     <label htmlFor="title" className="form-label">Title</label>
-    <input type="text" className="form-control" id="etitle" name="etitle"  value={note.etitle} aria-describedby="emailHelp" onChange={onChange}/>
+    <input type="text" className="form-control" id="etitle" name="etitle"   value={note.etitle} aria-describedby="emailHelp" onChange={onChange} />
   </div>
   <div className="mb-3">
     <label htmlFor="description" className="form-label">Description</label>
-    <input type="text" className="form-control" id="edescription" name="edescription" value={note.edescription} onChange={onChange}/>
+    <input type="text" className="form-control" id="edescription" name="edescription" value={note.edescription} onChange={onChange} />
   </div>
   
   <div className="mb-3">
@@ -67,7 +67,7 @@ const updateNote =(currentnote)=>
       </div>
       <div className="modal-footer">
         <button type="button" ref={refClose} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary" onClick={handleonClick}>Update note</button>
+        <button type="button" disabled={note.etitle.length<4 || note.edescription.length<5 } className="btn btn-primary" onClick={handleonClick}>Update note</button>
       </div>
     </div>
   </div>
