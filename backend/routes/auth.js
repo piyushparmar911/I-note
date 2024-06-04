@@ -43,7 +43,8 @@ router.post('/createuser' ,[
       }
       const authtoen= jwt.sign(data, jwt_secret);
       // res.json(user);
-      res.json({authtoen});
+      let success = false;
+      res.json({success,authtoen});
     } 
     catch (error) {
     console.error(error.message);
@@ -57,7 +58,8 @@ router.post('/createuser' ,[
     body('password', 'password is bl').isLength({min: 6})
     
 ], async (req, res) => {
-   let jwt_secret = "thisisdemoofinotes"
+  let jwt_secret = "thisisdemoofinotes"
+  let success = false;
   // Check for validation errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -83,7 +85,8 @@ router.post('/createuser' ,[
 
     const authtoen= jwt.sign(data, jwt_secret);
     // res.json(user);
-    res.json({authtoen});
+    success = true;
+    res.json({success,authtoen});
     } catch (error) {
       console.error(error.message);
       res.status(500).json({error: "internal server error"});

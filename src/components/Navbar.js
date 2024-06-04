@@ -20,6 +20,9 @@ const Navbar = () => {
         </li>
       </ul>
     </div>
+    
+<Link type="button" to="/Login" className="btn btn-dark mx-2">Login</Link>
+<Link type="button" to="/SignUp" className="btn btn-dark mx-2">Signup</Link>
   </div>
 </nav>
   )
