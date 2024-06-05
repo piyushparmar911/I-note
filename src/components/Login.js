@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useHref,Link } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 const Login = () => {
   const   [cred, setCred] = useState({email: "", password: ""});
-  let history = useHref("/");
+  let history = useNavigate();
   const handleSubmit =  async (e) => {
     e.preventDefault();
         const response = await fetch('http://localhost:5000/api/auth/login', {
@@ -18,7 +18,7 @@ const Login = () => {
             if (json.success) {
               // redirect to notepage
               localStorage.setItem('token',json.authtoken);
-              return <Link to={history}></Link>
+             history("/");
             }
             else {
               alert("not valid");
