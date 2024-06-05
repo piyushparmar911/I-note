@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate,Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = (props) => {
   const   [cred, setCred] = useState({email: "", password: ""});
   let history = useNavigate();
   const handleSubmit =  async (e) => {
@@ -19,9 +19,10 @@ const Login = () => {
               // redirect to notepage
               localStorage.setItem('token',json.authtoken);
              history("/");
+             props.showAlert("Login Up Successfully", "Success", "success");
             }
             else {
-              alert("not valid");
+              props.showAlert("not valid", "error","danger");
             }
           }
           const onChange= (e) =>{

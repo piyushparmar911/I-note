@@ -4,9 +4,10 @@ import { useContext,useEffect,useRef,useState } from 'react'
 import NoteItem from './NoteItem'
 import Addnote from './Addnote'
 
-const Note = () => {
+const Note = (props) => {
   const notes = useContext(noteContext);
   const {state,fetchNote,editNotes} = notes;
+  
   useEffect(() => {
     fetchNote();
     // eslint-disable-next-line
@@ -27,6 +28,7 @@ const updateNote =(currentnote)=>
       e.preventDefault();
       refClose.current.click();
       
+      props.showAlert("Note Updated Successfully", "Success", "success");
   };
   const onChange= (e) =>{
       setnotes({...note, [e.target.name]: e.target.value});
@@ -34,7 +36,8 @@ const updateNote =(currentnote)=>
   
   return (
     <div className='row'>
-      <Addnote/>
+      
+      <Addnote showAlert={props.showAlert} />
       {/* <!-- Button trigger modal --> */}
 <button type="button" ref={ref} className="btn d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
  
@@ -73,7 +76,7 @@ const updateNote =(currentnote)=>
   </div>
 </div>
       {state.map ((state)=>{
-        return <NoteItem key={state._id} updateNote={updateNote} state={state}/>
+        return <NoteItem key={state._id} updateNote={updateNote} showAlert={props.showAlert} state={state}/>
       })}
     </div>
   )

@@ -2,13 +2,13 @@ import React from 'react';
 import Note from './Note';
 
 
-const Home = () => {
-  
+const Home = (props) => {
+  const {showAlert} = props;
   return (
     
     
     <div className='m-3'>
-      <Note/>
+      <Note showAlert={showAlert} />
     </div>
   )
 }

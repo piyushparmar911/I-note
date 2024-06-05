@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useNavigate } from'react-router-dom';
-const SignUp = () => {
+const SignUp = (props) => {
   const   [cred, setCred] = useState({name: "",email: "", password: ""});
   let history = useNavigate();
   const handleSubmit =  async (e) => {
@@ -18,9 +18,10 @@ const SignUp = () => {
               // redirect to notepage
               localStorage.setItem('token',json.authtoken);
              history("/");
+             props.showAlert("Signed Up Successfully","Success", "success");
             }
             else {
-              alert("not valid");
+              props.showAlert("not valid", "error","danger");
             }
           }
           const onChange= (e) =>{
@@ -37,16 +38,16 @@ const SignUp = () => {
     </div>
     <div className="form-group m-3">
     <label htmlFor="email">Email address</label>
-    <input type="email" className="form-control" name="email" onChange={onChange} value={cred.email} id="email" aria-describedby="emailHelp" placeholder="Enter email"/>
+    <input type="email" className="form-control" name="email" onChange={onChange} value={cred.email} id="email" aria-describedby="emailHelp" placeholder="Enter email" required/>
     
   </div>
   <div className="form-group m-3">
     <label htmlFor="password">Password</label>
-    <input type="password" className="form-control" name="password" onChange={onChange} value={cred.password} id="password" placeholder="Password"/>
+    <input type="password" className="form-control" name="password" onChange={onChange} value={cred.password} id="password" placeholder="Password" minLength={4} required/>
   </div>
   <div className="form-group m-3">
     <label htmlFor="cpassword">Confirm Password</label>
-    <input type="password" className="form-control" id="cpassword" placeholder="Confirm Password"/>
+    <input type="password" className="form-control" id="cpassword" placeholder="Confirm Password" minLength={3} required/>
   </div>
   <button type="submit" onClick={handleSubmit} className="btn btn-primary">Submit</button>
 </form>
