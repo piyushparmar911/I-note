@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = (props) => {
   const   [cred, setCred] = useState({email: "", password: ""});
@@ -18,8 +18,8 @@ const Login = (props) => {
             if (json.success) {
               // redirect to notepage
               localStorage.setItem('token',json.authtoken);
+              props.showAlert("Login Up Successfully", "Success", "success");
              history("/");
-             props.showAlert("Login Up Successfully", "Success", "success");
             }
             else {
               props.showAlert("not valid", "error","danger");
