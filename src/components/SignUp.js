@@ -30,6 +30,7 @@ const SignUp = (props) => {
           
   return (
     <div className='container'>
+      <h1 className='text-center my-3'>SignUp to i-note</h1>
       <form onSubmit={handleSubmit}>
 
     <div className="form-group m-3">

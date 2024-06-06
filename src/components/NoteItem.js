@@ -11,7 +11,7 @@ const NoteItem = (props) => {
       <div className=' mt-4'>
 
         {/* <h1>states</h1> */}
-        <div className='container m-2 '>
+        <div className=' m-2 '>
           <div className="card" style={{ width: "18rem" }}>
             <div className="card-body">
               <div className='d-flex mb-3'>
