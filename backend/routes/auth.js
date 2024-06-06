@@ -41,10 +41,10 @@ router.post('/createuser' ,[
           id: user.id
         }
       }
-      const authtoen= jwt.sign(data, jwt_secret);
+      const authtoken= jwt.sign(data, jwt_secret);
       // res.json(user);
       let success = true;
-      res.json({success,authtoen});
+      res.json({success,authtoken});
     } 
     catch (error) {
     console.error(error.message);
@@ -83,10 +83,10 @@ router.post('/createuser' ,[
       }
     }
 
-    const authtoen= jwt.sign(data, jwt_secret);
+    const authtoken= jwt.sign(data, jwt_secret);
     // res.json(user);
     success = true;
-    res.json({success,authtoen});
+    res.json({success,authtoken});
     } catch (error) {
       console.error(error.message);
       res.status(500).json({error: "internal server error"});

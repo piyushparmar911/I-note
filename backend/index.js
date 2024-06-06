@@ -1,9 +1,9 @@
 const connectToMongoo = require('./db');
 
-var cors  = require('cors');
+const express = require('express');
+const cors = require('cors');
+const app = express();
 connectToMongoo();
-const express = require('express')
-const app = express()
 const port = 5000
 
 app.use(cors());

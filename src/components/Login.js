@@ -17,6 +17,7 @@ const Login = (props) => {
             console.log(json);
             if (json.success) {
               // redirect to notepage
+              
               localStorage.setItem('token',json.authtoken);
               props.showAlert("Login Up Successfully", "Success", "success");
              history("/");
@@ -49,5 +50,5 @@ const Login = (props) => {
     </div>
   )
 }
-
+  
 export default Login

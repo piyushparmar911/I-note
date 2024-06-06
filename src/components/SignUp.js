@@ -30,7 +30,7 @@ const SignUp = (props) => {
           
   return (
     <div className='container'>
-      <form>
+      <form onSubmit={handleSubmit}>
 
     <div className="form-group m-3">
     <label htmlFor="name">Name</label>
@@ -49,7 +49,7 @@ const SignUp = (props) => {
     <label htmlFor="cpassword">Confirm Password</label>
     <input type="password" className="form-control" id="cpassword" placeholder="Confirm Password" minLength={3} required/>
   </div>
-  <button type="submit" onClick={handleSubmit} className="btn btn-primary">Submit</button>
+  <button type="submit" disabled={cred.password.length<=3} className="btn btn-primary">Submit</button>
 </form>
     </div>
   )

@@ -9,11 +9,16 @@ const NoteState = (props) => {
 
   const fetchNote = async () => {
     try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.error('No token found in localStorage');
+        return;
+      }
       const response = await fetch(`${host}/api/notes/fetchallnotes`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": localStorage.getItem('token'),
+          "auth-token": localStorage.getItem('token')
         },
       });
 
@@ -21,10 +26,10 @@ const NoteState = (props) => {
       if (Array.isArray(json)) {
         setState(json);
       } else {
-        console.error("Fetched notes are not an array", json);
+        // console.log("Fetched notes are not an array");
       }
     } catch (error) {
-      console.error("Failed to fetch notes", error);
+      // console.error("Failed to fetch notes", error);
     }
   };
 
@@ -34,7 +39,7 @@ const NoteState = (props) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("token"),
+          "auth-token": localStorage.getItem("token")
         },
         body: JSON.stringify({ title, description, tag }),
       });
@@ -52,7 +57,7 @@ const NoteState = (props) => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": localStorage.getItem('token'),
+          "auth-token": localStorage.getItem('token')
         },
       });
 
@@ -70,12 +75,13 @@ const NoteState = (props) => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": localStorage.getItem('token'),
+          "auth-token": localStorage.getItem('token')
         },
         body: JSON.stringify({ title, description, tag }),
       });
 
       const json = await response.json();
+      console.log(json);
       const newNotes = JSON.parse(JSON.stringify(state));
       for (let index = 0; index < newNotes.length; index++) {
         const element = newNotes[index];
