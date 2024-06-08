@@ -1,4 +1,4 @@
-# iNote App
+# I-note App
 
 iNote is a simple and intuitive note-taking app designed to help you capture and organize your thoughts, ideas, and to-do lists effortlessly. 
 
